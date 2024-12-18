@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slime Simulation Test</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="https://unpkg.com/three@0.158/build/three.min.js"></script>
+    <script src="dist/slime-simulation.umd.js"></script>
+    <script>
+        const simulation = new SlimeSimulation.SlimeSimulation({
+            imageUrl: './pic.jpg',
+            slimeType: 'tar'
+        });
+       // Example transition trigger
+document.addEventListener('keypress', async (e) => {
+    if (e.key === '1') {
+        // Transition to red, more metallic state
+        simulation.startTransition({
+            baseColor: [0.8, 0.411, 0.1],
+            secondaryColor: [0.2, .0, 0.0, 1.],
+            noiseFactor: 0.0,
+            roughness: 0.2,
+            metalness: 1.0,
+            duration: 800
+        });
+    } else if (e.key === '2') {
+        // Transition to blue, more fluid state
+        simulation.startTransition({
+            baseColor: [0.1, 0.1, 0.8],
+            secondaryColor: [0.2, .0, 0.0, 1.],
+            noiseFactor: 0.05,
+            roughness: 0.3,
+            metalness: 0.0,
+            duration: 800
+        });
+    }
+    else if (e.key === '3') {
+        // Transition to blue, more fluid state
+        simulation.startTransition({
+            baseColor: [0.12, 0.1, 0.68],
+            secondaryColor: [0.2, .0, 0.0, 1.],
+            noiseFactor: 0.0,
+            roughness: 0.2,
+            metalness: .09, // Fixed: metalness should be between 0-1, 13.0 was causing issues
+            duration: 800
+        });
+    }
+    else if (e.key === '4') {
+        simulation.startTransition({
+            neighborThreshold: 0.09,
+            speed: 0.15,
+            duration: 800
+        });
+    }
+    else if (e.key === '5') {
+        simulation.startTransition({
+            neighborThreshold: 0.99,
+            speed: 0.5,
+                duration: 800
+            });
+        }
+    });
+    </script>
+</body>
+</html> 

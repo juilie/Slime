@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slime Simulation</title>
+</head>
+<body>
+    <canvas id="simulation"></canvas>
+    <script src="https://unpkg.com/three@0.158/build/three.min.js"></script>
+    <script src="https://unpkg.com/slime-simulation/dist/slime-simulation.umd.js"></script>
+    <script>
+        const canvas = document.getElementById('simulation');
+        const simulation = new window.SlimeSimulation({
+            canvas: canvas,
+            shader: 'glass',
+            baseColor: [0.8, 0.2, 0.1],
+            speed: 0.2
+        });
+
+        // Example: Change configuration after 2 seconds
+        setTimeout(() => {
+            simulation.setConfig({
+                baseColor: [0.1, 0.1, 0.8],
+                noiseFactor: 0.05,
+                roughness: 0.3,
+                metalness: 0.0
+            });
+        }, 2000);
+    </script>
+</body>
+</html>

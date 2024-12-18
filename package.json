@@ -1,0 +1,33 @@
+{
+  "name": "slime-simulation",
+  "version": "1.0.2",
+  "type": "module",
+  "main": "dist/slime-simulation.js",
+  "module": "dist/slime-simulation.esm.js",
+  "browser": "dist/slime-simulation.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/slime-simulation.esm.js",
+      "require": "./dist/slime-simulation.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-string": "^3.0.0"
+  }
+}
